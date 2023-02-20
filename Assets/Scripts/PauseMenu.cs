@@ -23,16 +23,16 @@ public class PauseMenu : MonoBehaviour
 		{
 			if (Time.timeScale == 1)
 			{
-				Pause();
+				PauseGame();
 			}
 			else
 			{
-				Resume();
+				ResumeGame();
 			}
 		}
 	}
 
-	void Pause()
+	void PauseGame()
 	{
 		PauseMenuScreen.SetActive(true);
 		Time.timeScale = 0;
@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
 		GameHUD.SetActive(false);
 	}
 
-	void Resume()
+	void ResumeGame()
 	{
 		PauseMenuScreen.SetActive(false);
 		Time.timeScale = 1;
@@ -48,11 +48,6 @@ public class PauseMenu : MonoBehaviour
 		GameHUD.SetActive(true);
 		RestartScreen.SetActive(false);
 		ExitScreen.SetActive(false);
-	}
-
-	public void ResumeGame()
-	{
-		Resume();
 	}
 
 	public void RestartGame()
