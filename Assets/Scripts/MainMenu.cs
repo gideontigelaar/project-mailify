@@ -18,8 +18,8 @@ public class MainMenu: MonoBehaviour
 
     public void Start()
     {
-        GameBtn.GetComponentInChildren<Image>().color = new Color32(0,0,255,255);
-        GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(0,0,255,255);
+        GameBtn.GetComponentInChildren<Image>().color = new Color32(137,207,240,255);
+        GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(137,207,240,255);
 	}
 
     public void OpenGame()
@@ -28,12 +28,12 @@ public class MainMenu: MonoBehaviour
         Quests.SetActive(false);
         Settings.SetActive(false);
 
-        GameBtn.GetComponentInChildren<Image>().color = new Color32(0,0,255,255);
+        GameBtn.GetComponentInChildren<Image>().color = new Color32(137,207,240,255);
         ShopBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
         QuestsBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
         SettingsBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
 
-        GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(0,0,255,255);
+        GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(137,207,240,255);
         ShopBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
         QuestsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
         SettingsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
@@ -46,12 +46,12 @@ public class MainMenu: MonoBehaviour
         Settings.SetActive(false);
 
         GameBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
-        ShopBtn.GetComponentInChildren<Image>().color = new Color32(0,0,255,255);
+        ShopBtn.GetComponentInChildren<Image>().color = new Color32(137,207,240,255);
         QuestsBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
         SettingsBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
 
         GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
-        ShopBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(0,0,255,255);
+        ShopBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(137,207,240,255);
         QuestsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
         SettingsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
     }
@@ -64,12 +64,12 @@ public class MainMenu: MonoBehaviour
 
         GameBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
         ShopBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
-        QuestsBtn.GetComponentInChildren<Image>().color = new Color32(0,0,255,255);
+        QuestsBtn.GetComponentInChildren<Image>().color = new Color32(137,207,240,255);
         SettingsBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
 
         GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
         ShopBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
-        QuestsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(0,0,255,255);
+        QuestsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(137,207,240,255);
         SettingsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
     }
 
@@ -82,11 +82,11 @@ public class MainMenu: MonoBehaviour
         GameBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
         ShopBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
         QuestsBtn.GetComponentInChildren<Image>().color = new Color32(112,112,112,255);
-        SettingsBtn.GetComponentInChildren<Image>().color = new Color32(0,0,255,255);
+        SettingsBtn.GetComponentInChildren<Image>().color = new Color32(137,207,240,255);
 
         GameBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
         ShopBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
         QuestsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(112,112,112,255);
-        SettingsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(0,0,255,255);
+        SettingsBtn.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(137,207,240,255);
     }
 }
