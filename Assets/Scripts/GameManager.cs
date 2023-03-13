@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        happinessText.GetComponent<Text> ().text = "" + robot.GetComponent<Robot> ().happines;
-        hungerText.GetComponent<Text> ().text = "" + robot.GetComponent<Robot> ().hunger;
+        happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().happines;
+        hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().hunger;
     }
 }
