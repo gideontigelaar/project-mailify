@@ -10,11 +10,30 @@ public class Robot : MonoBehaviour
   private int _happines;
 
   private bool _serverTime;
+  private int _clickCount;
 
     void Start()
     {
-      playerPrefs.SetString ("then", "09/03/2023 15:13:50");
+      PlayerPrefs.SetString ("then", "13/03/2023 10:00:00");
       updateStatus ();  
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonUp (0))
+        {
+            Debug.Log ("Clicked");
+            Vector2 v = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+            RaycastHit2D hit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (v), Vector2.zero);
+            if (hit)
+            {
+                Debug.Log (hit.transform.gameObject.name);
+                if (hit.transform.gameObject.tag == "robot")
+                {
+                    _clickCount++;
+                }
+            }
+        }
     }
 
     void updateStatus()
@@ -39,16 +58,27 @@ public class Robot : MonoBehaviour
             _happines = PlayerPrefs.GetInt ("_happines");
         }
 
-        if (!playerPrefs.Haskey("then"))
-            playerPrefs.SetString ("then", getStringTime());
+        if (!PlayerPrefs.HasKey("then"))
+            PlayerPrefs.SetString ("then", getStringTime());
 
-            //Debug.Log (getStringSpan ().ToString ());
-            //Debug.Log (getStringSpan ().TotalHours ());
+
+            TimeSpan ts = getTimeSpan ();
+            _hunger -= (int) (ts.TotalHours * 2);
+            if (_hunger < 0)
+                _hunger = 0;
+            _happines -= (int) ((100 - _hunger) * (ts.TotalHours / 5));
+            if (_happines < 0)
+                _happines = 0;
+
+
+
+           //Debug.Log (getTimeSpan ().ToString ());
+            //Debug.Log (getTimeSpan ().TotalHours );
 
         if (_serverTime) 
             updateServer ();
         else
-        Invokerepeating ("updateDevice", 0f, 30f);
+        InvokeRepeating ("updateDevice", 0f, 30f);
         
 
     }
@@ -60,15 +90,15 @@ public class Robot : MonoBehaviour
 
     void updateDevice()
     {
-        playerPrefs>SetString ("then", getStringTime ());
+        PlayerPrefs.SetString ("then", getStringTime ());
     }
 
-   TimeSpan GetTimeSpan()
+   TimeSpan getTimeSpan()
    {
         if (_serverTime)
-            return new TimeSpan();
-        else 
-        return DateTime.Now - Convert.ToDateTime(playerPrefs.getString ("then"));
+           return new TimeSpan();
+       else 
+        return DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString ("then"));
    }
 
     string getStringTime()
