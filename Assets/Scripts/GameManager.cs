@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().happines;
+        happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().happiness;
         hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().hunger;
     }
 }
