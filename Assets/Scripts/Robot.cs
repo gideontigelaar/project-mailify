@@ -7,14 +7,14 @@ public class Robot : MonoBehaviour
 [SerializeField]
   private int _hunger;
  [SerializeField]
-  private int _happines;
+  private int _happiness;
 
   private bool _serverTime;
   private int _clickCount;
 
     void Start()
     {
-      PlayerPrefs.SetString ("then", "13/03/2023 10:00:00");
+      PlayerPrefs.SetString ("then", "10/03/2023 10:00:00");
       updateStatus ();  
     }
 
@@ -31,6 +31,11 @@ public class Robot : MonoBehaviour
                 if (hit.transform.gameObject.tag == "robot")
                 {
                     _clickCount++;
+                    if (_clickCount >= 3)
+                    {
+                        _clickCount = 0;
+                        UpdateHappiness (1);
+                    }
                 }
             }
         }
@@ -48,14 +53,14 @@ public class Robot : MonoBehaviour
             _hunger = PlayerPrefs.GetInt ("_hunger");
         }
 
-        if (!PlayerPrefs.HasKey ("_happines")) 
+        if (!PlayerPrefs.HasKey ("_happiness")) 
         {
-            _happines = 100;
-            PlayerPrefs.SetInt ("_happines",_happines);
+            _happiness = 100;
+            PlayerPrefs.SetInt ("_happiness",_happiness);
         }
         else
         {
-            _happines = PlayerPrefs.GetInt ("_happines");
+            _happiness = PlayerPrefs.GetInt ("_happiness");
         }
 
         if (!PlayerPrefs.HasKey("then"))
@@ -66,9 +71,9 @@ public class Robot : MonoBehaviour
             _hunger -= (int) (ts.TotalHours * 2);
             if (_hunger < 0)
                 _hunger = 0;
-            _happines -= (int) ((100 - _hunger) * (ts.TotalHours / 5));
-            if (_happines < 0)
-                _happines = 0;
+            _happiness -= (int) ((100 - _hunger) * (ts.TotalHours / 5));
+            if (_happiness < 0)
+                _happiness = 0;
 
 
 
@@ -113,9 +118,17 @@ public class Robot : MonoBehaviour
         set {_hunger = value;}
     }
 
-    public int happines
+    public int happiness
     {
-        get{return _happines;}
-        set {_happines = value;}
+        get{return _happiness;}
+        set {_happiness = value;}
     }
+
+    public void UpdateHappiness(int i)
+    {
+        happiness += i;
+        if (happiness > 100)
+            happiness = 100;
+    }
+
 }
