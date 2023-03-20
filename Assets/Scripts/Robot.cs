@@ -20,14 +20,15 @@ public class Robot : MonoBehaviour
 
     void Update()
     {
+        GetComponent<Animator> ().SetBool ("jump", gameObject.transform.position.y > -2.9f);
         if (Input.GetMouseButtonUp (0))
         {
-            Debug.Log ("Clicked");
+            //Debug.Log ("Clicked");
             Vector2 v = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
             RaycastHit2D hit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (v), Vector2.zero);
             if (hit)
             {
-                Debug.Log (hit.transform.gameObject.name);
+                //Debug.Log (hit.transform.gameObject.name);
                 if (hit.transform.gameObject.tag == "robot")
                 {
                     _clickCount++;
@@ -35,6 +36,7 @@ public class Robot : MonoBehaviour
                     {
                         _clickCount = 0;
                         UpdateHappiness (1);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10000));
                     }
                 }
             }
