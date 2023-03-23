@@ -16,7 +16,7 @@ public class Robot : MonoBehaviour
 
     void Start()
     {
-      PlayerPrefs.SetString ("then", "10/03/2023 10:00:00");
+      PlayerPrefs.SetString ("then", "23/03/2023 10:00:00");
       updateStatus ();  
       if (!PlayerPrefs.HasKey ("name"))
       PlayerPrefs.SetString ("name","Robot" );
@@ -25,24 +25,24 @@ public class Robot : MonoBehaviour
 
     void Update()
     {
-        GetComponent<Animator>().SetBool("jump", gameObject.transform.position.y > -0.4851468f);
+        GetComponent<Animator>().SetBool("jump", gameObject.transform.position.y > -0.48f);
+       
         if (Input.GetMouseButtonUp (0))
         {
-            //Debug.Log ("Clicked");
-            
             Vector2 v = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
             RaycastHit2D hit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (v), Vector2.zero);
             if (hit)
             {
-                //Debug.Log (hit.transform.gameObject.name);
+               
                 if (hit.transform.gameObject.tag == "Robot")
                 {
                     _clickCount++;
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 500));
+                    
                     if (_clickCount >= 3)
                     {
                         _clickCount = 0;
                         UpdateHappiness(1);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 500));
                     }
                 }
             }
