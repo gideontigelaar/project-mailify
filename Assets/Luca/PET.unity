@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708984, g: 0.37837017, b: 0.35722524, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 132504770}
   m_Layer: 0
   m_Name: Blue Robot
-  m_TagString: robot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,9 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374e05176b251594fbc9a81ffdbcd51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hunger: 100
-  _happiness: 0
-  _name: 
 --- !u!61 &132504769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3158,10 +3155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9147eba7cb9961448bb1a2f15ff61c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  happinessText: {fileID: 527158443}
-  hungerText: {fileID: 434721658}
-  nameText: {fileID: 788136830}
-  robot: {fileID: 132504764}
 --- !u!4 &2103505419
 Transform:
   m_ObjectHideFlags: 0
