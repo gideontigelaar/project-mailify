@@ -8,6 +8,8 @@ public class Robot : MonoBehaviour
   private int _hunger;
  [SerializeField]
   private int _happiness;
+  [SerializeField]
+  private string _name;
 
   private bool _serverTime;
   private int _clickCount;
@@ -16,14 +18,18 @@ public class Robot : MonoBehaviour
     {
       PlayerPrefs.SetString ("then", "10/03/2023 10:00:00");
       updateStatus ();  
+      if (!PlayerPrefs.HasKey ("name"))
+      PlayerPrefs.SetString ("name","Robot" );
+      _name = PlayerPrefs.GetString ("name"); 
     }
 
     void Update()
     {
-        GetComponent<Animator> ().SetBool ("jump", gameObject.transform.position.y > -2.9f);
+        GetComponent<Animator>().SetBool("jump", gameObject.transform.position.y > -0.4851468f);
         if (Input.GetMouseButtonUp (0))
         {
             //Debug.Log ("Clicked");
+            
             Vector2 v = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
             RaycastHit2D hit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (v), Vector2.zero);
             if (hit)
@@ -32,11 +38,11 @@ public class Robot : MonoBehaviour
                 if (hit.transform.gameObject.tag == "robot")
                 {
                     _clickCount++;
+                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 500));
                     if (_clickCount >= 3)
                     {
                         _clickCount = 0;
-                        UpdateHappiness (1);
-                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10000));
+                        UpdateHappiness(1);
                     }
                 }
             }
@@ -124,6 +130,12 @@ public class Robot : MonoBehaviour
     {
         get{return _happiness;}
         set {_happiness = value;}
+    }
+
+    public string name
+    {
+        get{return _name;}
+        set {_name = value;}
     }
 
     public void UpdateHappiness(int i)

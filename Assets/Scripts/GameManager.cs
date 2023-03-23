@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
    
     public GameObject happinessText;
     public GameObject hungerText;
+    public GameObject nameText;
 
     public GameObject robot;
 
@@ -15,5 +16,6 @@ public class GameManager : MonoBehaviour
     {
         happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().happiness;
         hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot> ().hunger;
+        nameText.GetComponent<TextMeshProUGUI>().text = robot.GetComponent<Robot> ().name;
     }
 }
