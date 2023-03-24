@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class ThemeSwitcher : MonoBehaviour
-{
-    // Update is called once per frame
-    void Update()
-    {
+public class ThemeSwitcher : MonoBehaviour {
+
+    void Update() {
         // input
         // if (Input.GetKeyDown(KeyCode.Alpha1)) {
         //     ToggleTheme();
@@ -72,16 +69,9 @@ public class ThemeSwitcher : MonoBehaviour
 
     // Set the previous theme to the current theme for the next time the function is called
     PlayerPrefs.SetInt("PreviousTheme", theme);
+ }
 }
-
 // Helper function to invert a color
 // private Color InvertColor(Color color) {
 //     return new Color(1f - color.r, 1f - color.g, 1f - color.b, color.a);
 // }
-
-
-
-
-
-
-}
