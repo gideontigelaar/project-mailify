@@ -34,7 +34,7 @@ public class Robot : MonoBehaviour
             if (hit)
             {
                
-                if (hit.transform.gameObject.tag == "Robot")
+                if (hit.transform.gameObject.tag == "robot")
                 {
                     _clickCount++;
                     
