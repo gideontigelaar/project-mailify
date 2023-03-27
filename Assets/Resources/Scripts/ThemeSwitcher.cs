@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class ThemeSwitcher : MonoBehaviour {
 
-    void Update() {
-        // input
-        // if (Input.GetKeyDown(KeyCode.Alpha1)) {
-        //     ToggleTheme();
-        // }
-    }
-
     public void ToggleTheme() {
         int previousTheme = PlayerPrefs.GetInt("PreviousTheme", 1);
         int newTheme = previousTheme == 1 ? 2 : 1;
@@ -44,34 +37,18 @@ public class ThemeSwitcher : MonoBehaviour {
 
         PlayerPrefs.SetInt("CurrentTheme", theme);
 
-
-        // for each gameObject with "Panel" it the name (in the hierarchy) invert the Image color
-        // check my name, not by tag
-
-        // ForceInvertColors();
-
         foreach (Image image in FindObjectsOfType<Image>()) {
-            // Check if the sprite is located in a folder containing "t_" in its name
             if (image.sprite != null && image.sprite.name.Contains("t_")) {
-                // Get the path of the sprite using the Resources.LoadAll<Sprite> method
                 string spritePath = "Sprites/Theme" + previousTheme + "/" + image.sprite.name;
 
-                // Check if the current sprite is in the previous theme's folder
                 if (Resources.Load<Sprite>(spritePath) != null) {
-                    // Change its sprite to the new theme's sprite
                     string newSpritePath = "Sprites/Theme" + theme + "/" + image.sprite.name;
 
-                    // Change the sprite
                     image.sprite = Resources.Load<Sprite>(newSpritePath);
                 }
             }
         }
 
-    // Set the previous theme to the current theme for the next time the function is called
     PlayerPrefs.SetInt("PreviousTheme", theme);
- }
+    }
 }
-// Helper function to invert a color
-// private Color InvertColor(Color color) {
-//     return new Color(1f - color.r, 1f - color.g, 1f - color.b, color.a);
-// }
