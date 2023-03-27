@@ -1783,7 +1783,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 691797680}
-        m_TargetAssemblyTypeName: ToggleSetting, Assembly-CSharp
+        m_TargetAssemblyTypeName: ToggleHandler, Assembly-CSharp
         m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
@@ -1933,7 +1933,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 749978102}
-        m_TargetAssemblyTypeName: ToggleSetting, Assembly-CSharp
+        m_TargetAssemblyTypeName: ToggleHandler, Assembly-CSharp
         m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
