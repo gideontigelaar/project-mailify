@@ -15,11 +15,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject robot;
 
+
+    
     void Update()
     {
         happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().happiness;
         hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().hunger;
         nameText.GetComponent<TextMeshProUGUI>().text = robot.GetComponent<Robot>().name;
+
     }
 
     public void triggerNamepanel(bool b)
@@ -32,5 +35,29 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("name", robot.GetComponent<Robot>().name);
         }
     }
+
+    public void buttonNehavior(int i)
+    {
+        switch(i) 
+        { 
+            case 0:
+            default:
+                break;
+                case (1):
+
+                break;
+                case (2):
+
+                break; 
+                case (3):
+                
+                break;
+                case (4):
+                robot.GetComponent<Robot> ().saveRobot ();
+                break;
+        }
+    }
+
+    
 
 }

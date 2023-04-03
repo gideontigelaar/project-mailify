@@ -28,12 +28,13 @@ public class Robot : MonoBehaviour
         GetComponent<Animator>().SetBool("jump", gameObject.transform.position.y > -0.48f);
        
         if (Input.GetMouseButtonUp (0))
-        {
+        { Debug.Log("geklikt");
             Vector2 v = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
             RaycastHit2D hit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (v), Vector2.zero);
             if (hit)
             {
-               
+                Debug.Log(hit.transform.gameObject.name);
+
                 if (hit.transform.gameObject.tag == "robot")
                 {
                     _clickCount++;
@@ -134,8 +135,8 @@ public class Robot : MonoBehaviour
 
     public string name
     {
-        get{return _name;}
-        set {_name = value;}
+        get{ return _name; }
+        set { _name = value; }
     }
 
     public void UpdateHappiness(int i)
@@ -143,6 +144,14 @@ public class Robot : MonoBehaviour
         happiness += i;
         if (happiness > 100)
             happiness = 100;
+    }
+
+    public void saveRobot()
+    {
+        if (!_serverTime)
+            updateDevice();
+        PlayerPrefs.SetInt ("_hunger", _hunger);
+        PlayerPrefs.SetInt("_happiness", _happiness);
     }
 
 }
