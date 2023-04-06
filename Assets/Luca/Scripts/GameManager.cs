@@ -14,15 +14,26 @@ public class GameManager : MonoBehaviour
     public GameObject nameText;
 
     public GameObject robot;
+    public GameObject robotPanel;
+    public GameObject []robotList;
 
+    public GameObject background;
+    public Sprite[] backgroundOptions;
 
-    
+    private void Start()
+    {
+        if (!PlayerPrefs.HasKey("looks"))
+            PlayerPrefs.SetInt("looks", 0);
+        createRobot(PlayerPrefs.GetInt("looks"));
+        createRobot (0);
+    }
     void Update()
     {
         happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().happiness;
         hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().hunger;
         nameText.GetComponent<TextMeshProUGUI>().text = robot.GetComponent<Robot>().name;
 
+        
     }
 
     public void triggerNamepanel(bool b)
@@ -36,12 +47,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void buttonNehavior(int i)
+    public void buttonBehavior(int i)
     {
         switch(i) 
         { 
             case 0:
             default:
+                robotPanel.SetActive(!robotPanel.activeInHierarchy);
                 break;
                 case (1):
 
@@ -58,6 +70,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void createRobot(int i)
+    {
+        if (robot)
+        Destroy(robot);
+        robot = Instantiate(robotList[i], Vector3.zero, Quaternion.identity) as GameObject;
 
+        if(robotPanel.activeInHierarchy)
+            robotPanel.SetActive(false);
+        
+        PlayerPrefs.SetInt("looks", i);
+    }
+    public void OnBeforeTransformParentChanged(int i)
+    {
+        
+    }
 }
