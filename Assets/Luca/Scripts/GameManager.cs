@@ -31,6 +31,8 @@ namespace PET
         public GameObject foodPanel;
         public Sprite[] foodIcons;
 
+        public GameObject questPanel;
+
         private void Start()
         {
             if (!PlayerPrefs.HasKey("looks"))
@@ -81,7 +83,7 @@ namespace PET
                     foodPanel.SetActive(!foodPanel.activeInHierarchy);
                     break; 
                     case (3):
-                
+                    questPanel.SetActive(!questPanel.activeInHierarchy);
                     break;
                     case (4):
                     robot.GetComponent<Robot> ().saveRobot ();
@@ -127,6 +129,13 @@ namespace PET
             if (homePanel.activeInHierarchy)
                 homePanel.SetActive(false);
             toggle(foodPanel);
+        }
+
+        public void selectguest(int i)
+        {
+            if (homePanel.activeInHierarchy)
+                homePanel.SetActive(false);
+            toggle(questPanel);
         }
         public void toggle(GameObject g)
         {
