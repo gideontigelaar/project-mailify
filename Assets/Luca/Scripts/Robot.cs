@@ -90,7 +90,7 @@ namespace PET
             _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
             if (_happiness < 0)
                 _happiness = 0;
-
+            
 
 
             //Debug.Log (getTimeSpan ().ToString ());
@@ -168,8 +168,8 @@ namespace PET
         public void Updatecoin(int i)
         {
             coin += i;
-            if (coin > 100)
-                coin = 100;
+            if (coin > 1000)
+                coin = 1000;
         }
         public void saveRobot()
         {
@@ -186,15 +186,39 @@ namespace PET
                 case 0:
                 default:
                     UpdateHunger(1);
+                    Updatecoin(-1);
                     break;
                 case (1):
                     UpdateHunger(2);
+                    Updatecoin(-2);
                     break;
                 case (2):
                     UpdateHunger(3);
+                    Updatecoin(-3);
                     break;
             }
         }
-        
+
+        public void questButton(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                default:
+                    Updatecoin(25);
+                    break;
+                case (1):
+                    Updatecoin(50);
+                    break;
+                case (2):
+                    Updatecoin(75);
+                    break;
+
+                    case (3):
+                    Updatecoin(100);
+                    break;
+            }
+        }
+
     }
 }
