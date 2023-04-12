@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ThemeSwitcher : MonoBehaviour {
+public class ThemeSwitcher : MonoBehaviour
+{
 
-    public void ToggleTheme() {
+    public void ToggleTheme()
+    {
         int previousTheme = PlayerPrefs.GetInt("PreviousTheme", 1);
         int newTheme = previousTheme == 1 ? 2 : 1;
         SwitchTheme(newTheme);
@@ -27,7 +29,8 @@ public class ThemeSwitcher : MonoBehaviour {
     //     }
     // }
 
-    public void SwitchTheme(int theme) {
+    public void SwitchTheme(int theme)
+    {
         string themeName = "Theme" + theme;
 
         Sprite[] themeSprites = Resources.LoadAll<Sprite>(themeName);
@@ -37,11 +40,14 @@ public class ThemeSwitcher : MonoBehaviour {
 
         PlayerPrefs.SetInt("CurrentTheme", theme);
 
-        foreach (Image image in FindObjectsOfType<Image>()) {
-            if (image.sprite != null && image.sprite.name.Contains("t_")) {
+        foreach (Image image in FindObjectsOfType<Image>())
+        {
+            if (image.sprite != null && image.sprite.name.Contains("t_"))
+            {
                 string spritePath = "Sprites/Theme" + previousTheme + "/" + image.sprite.name;
 
-                if (Resources.Load<Sprite>(spritePath) != null) {
+                if (Resources.Load<Sprite>(spritePath) != null)
+                {
                     string newSpritePath = "Sprites/Theme" + theme + "/" + image.sprite.name;
 
                     image.sprite = Resources.Load<Sprite>(newSpritePath);
