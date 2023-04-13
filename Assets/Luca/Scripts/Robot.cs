@@ -176,6 +176,7 @@ namespace PET
             if (!_serverTime)
                 updateDevice();
             PlayerPrefs.SetInt("_hunger", _hunger);
+            PlayerPrefs.SetInt("_coin", _coin);
             PlayerPrefs.SetInt("_happiness", _happiness);
         }
 
