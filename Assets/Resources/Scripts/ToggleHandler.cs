@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleHandler : MonoBehaviour {
+public class ToggleHandler : MonoBehaviour
+{
 
     bool isOn;
     GameObject toggleCircle;
@@ -12,30 +13,36 @@ public class ToggleHandler : MonoBehaviour {
     public GameObject GO;
     public string scriptName, functionToExecute;
 
-    void Start() {
+    void Start()
+    {
         toggleCircle = transform.GetChild(0).gameObject;
         
-        if (PlayerPrefs.GetInt("CurrentTheme", 1) == 1) {
+        if (PlayerPrefs.GetInt("CurrentTheme", 1) == 2)
+        {
             GO.GetComponent(scriptName).SendMessage("ToggleTheme");
             Toggle();
         }
     }
 
-    public void Toggle() {
+    public void Toggle()
+    {
         isOn = !isOn;
 
+        // Delete this if used for other purposes vv
         int currentTheme = PlayerPrefs.GetInt("CurrentTheme", 1);
         string onOff = isOn ? "On" : "Off";
         string spritePath = $"Sprites/Theme{currentTheme}/t_ToggleBackground{onOff}";
         string newSpritePath = $"Sprites/Theme{currentTheme}/t_ToggleHandle{onOff}";
         GetComponent<Image>().sprite = Resources.Load<Sprite>(spritePath);
         transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(newSpritePath);
+        // Delete this if used for other purposes ^^
 
         currentLerpTime = 0f;
         GO.GetComponent(scriptName).SendMessage(functionToExecute);
     }
 
-    void Update() {
+    void Update()
+    {
         currentLerpTime += Time.deltaTime;
         if (currentLerpTime > lerpTime) { currentLerpTime = lerpTime; }
         float t = currentLerpTime / lerpTime;
