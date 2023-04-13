@@ -63,7 +63,7 @@ namespace PET
     
             if (b)
             {
-                robot.GetComponent<Robot> ().name = nameInput.GetComponent<InputField> ().text;
+                robot.GetComponent<Robot> ().name = nameInput.GetComponent<TMP_InputField>().text;
                 PlayerPrefs.SetString("name", robot.GetComponent<Robot>().name);
             }
         }
