@@ -185,17 +185,25 @@ namespace PET
             {
                 case 0:
                 default:
+                if (coin > 1) {
                     UpdateHunger(1);
                     Updatecoin(-1);
-                    break;
+                }
+                break;
+
                 case (1):
+                if (coin > 2) {
                     UpdateHunger(2);
                     Updatecoin(-2);
-                    break;
+                }
+                break;
+
                 case (2):
+                if (coin > 3) {
                     UpdateHunger(3);
                     Updatecoin(-3);
-                    break;
+                }
+                break;
             }
         }
 
