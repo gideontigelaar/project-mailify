@@ -32,6 +32,7 @@ namespace PET
         public Sprite[] foodIcons;
 
         public GameObject questPanel;
+        public GameObject asielPanel;
 
         private void Start()
         {
@@ -93,9 +94,9 @@ namespace PET
 
         public void createRobot(int i)
         {
-            //if (robot)
-            //Destroy(robot);
-           // robot = Instantiate(robotList[i], Vector3.zero, Quaternion.identity) as GameObject;
+            if (robot)
+            Destroy(robot);
+            robot = Instantiate(robotList[i], Vector3.zero, Quaternion.identity) as GameObject;
 
             toggle(robotPanel);
 
@@ -137,6 +138,14 @@ namespace PET
                 homePanel.SetActive(false);
             toggle(questPanel);
         }
+
+        public void asiel(int i)
+        {
+            if (asielPanel.activeInHierarchy)
+                asielPanel.SetActive(false);
+            toggle(asielPanel);
+        }
+
         public void toggle(GameObject g)
         {
             if (g.activeInHierarchy)

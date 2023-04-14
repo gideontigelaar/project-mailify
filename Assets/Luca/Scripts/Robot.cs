@@ -22,7 +22,7 @@ namespace PET
        
         void Start()
         {
-            PlayerPrefs.SetString("then", "23/03/2023 10:00:00");
+            PlayerPrefs.SetString("then", "13/04/2023 13:00:00");
             updateStatus();
             if (!PlayerPrefs.HasKey("name"))
                 PlayerPrefs.SetString("name", "Robot");
@@ -35,18 +35,18 @@ namespace PET
 
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("geklikt");
+                
                 Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero);
                 if (hit)
                 {
-                    Debug.Log(hit.transform.gameObject.name);
+
 
                     if (hit.transform.gameObject.tag == "robot")
                     {
                         _clickCount++;
 
-                        if (_clickCount >= 3)
+                        if (_clickCount >= 1)
                         {
                             _clickCount = 0;
                             UpdateHappiness(1);
@@ -93,8 +93,7 @@ namespace PET
             
 
 
-            //Debug.Log (getTimeSpan ().ToString ());
-            //Debug.Log (getTimeSpan ().TotalHours );
+           
 
             if (_serverTime)
                 updateServer();
@@ -226,6 +225,18 @@ namespace PET
                     case (3):
                     Updatecoin(100);
                     break;
+            }
+        }
+
+        public void asielButton(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                default:
+                    Updatecoin(-20);
+                    break;
+                
             }
         }
 
