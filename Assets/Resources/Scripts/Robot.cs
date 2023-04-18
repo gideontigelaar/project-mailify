@@ -18,8 +18,9 @@ namespace PET
 
         private bool _serverTime;
         private int _clickCount;
+        public GameObject asielPanel;
 
-       
+
         void Start()
         {
             PlayerPrefs.SetString("then", "13/04/2023 13:00:00");
@@ -31,30 +32,7 @@ namespace PET
 
         void Update()
         {
-            GetComponent<Animator>().SetBool("jump", gameObject.transform.position.y > -0.48f);
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                
-                Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero);
-                if (hit)
-                {
-
-
-                    if (hit.transform.gameObject.tag == "robot")
-                    {
-                        _clickCount++;
-
-                        if (_clickCount >= 1)
-                        {
-                            _clickCount = 0;
-                            UpdateHappiness(1);
-                            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 500));
-                        }
-                    }
-                }
-            }
+            
         }
 
         void updateStatus()
@@ -90,10 +68,10 @@ namespace PET
             _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
             if (_happiness < 0)
                 _happiness = 0;
-            
+            //_happiness == (int) * (ts.Totadays / 2);
 
 
-           
+
 
             if (_serverTime)
                 updateServer();
@@ -186,6 +164,7 @@ namespace PET
                 case 0:
                 default:
                 if (coin > 1) {
+                    UpdateHappiness(2);
                     UpdateHunger(1);
                     Updatecoin(-1);
                 }
@@ -193,6 +172,7 @@ namespace PET
 
                 case (1):
                 if (coin > 2) {
+                    UpdateHappiness(4);
                     UpdateHunger(2);
                     Updatecoin(-2);
                 }
@@ -200,6 +180,7 @@ namespace PET
 
                 case (2):
                 if (coin > 3) {
+                    UpdateHappiness(6);
                     UpdateHunger(3);
                     Updatecoin(-3);
                 }
@@ -238,7 +219,25 @@ namespace PET
                     break;
                 
             }
+            //if (happiness = 0)
+            //{
+              //  if (!asielPanel.activeSelf)
+               // {
+                //    Time.timeScale = 0f;
+                 //   asielPanel.SetActive(true);
+                  //  Cursor.visible = true;
+                //}
+                //else
+                //{
+                 //   Time.timeScale = 1f;
+                  //  asielPanel.SetActive(false);
+                   // Cursor.visible = false;
+
+                //}
+            }
         }
 
-    }
+       
+
+    
 }
