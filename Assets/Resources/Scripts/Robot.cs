@@ -19,7 +19,7 @@ namespace PET
         private bool _serverTime;
         private int _clickCount;
         public GameObject asielPanel;
-
+        public GameObject Person;
 
         void Start()
         {
@@ -65,10 +65,13 @@ namespace PET
             _hunger -= (int)(ts.TotalHours * 2);
             if (_hunger < 0)
                 _hunger = 0;
-            _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
-            if (_happiness < 0)
-                _happiness = 0;
-            //_happiness == (int) * (ts.Totadays / 2);
+            _happiness = (int)((100 - _hunger) * (ts.TotalHours / 5));
+            if (_happiness == 0)
+                _happiness = (int)(0 + (ts.TotalDays / 3));
+                asielPanel.SetActive(true);
+                Person.SetActive(false);
+            
+            
 
 
 
@@ -216,25 +219,13 @@ namespace PET
                 case 0:
                 default:
                     Updatecoin(-20);
+                    asielPanel.SetActive(false);
+                    Person.SetActive(true);
                     break;
                 
             }
-            //if (happiness = 0)
-            //{
-              //  if (!asielPanel.activeSelf)
-               // {
-                //    Time.timeScale = 0f;
-                 //   asielPanel.SetActive(true);
-                  //  Cursor.visible = true;
-                //}
-                //else
-                //{
-                 //   Time.timeScale = 1f;
-                  //  asielPanel.SetActive(false);
-                   // Cursor.visible = false;
-
-                //}
-            }
+           
+        }
         }
 
        
