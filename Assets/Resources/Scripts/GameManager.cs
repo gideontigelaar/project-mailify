@@ -25,8 +25,7 @@ namespace PET
         public GameObject[] homeTiles;
 
 
-        public GameObject background;
-        public Sprite[] backgroundOptions;
+        
 
         public GameObject foodPanel;
         public Sprite[] foodIcons;
@@ -40,9 +39,7 @@ namespace PET
                 PlayerPrefs.SetInt("looks", 0);
             createRobot(PlayerPrefs.GetInt("looks"));
 
-            if (!PlayerPrefs.HasKey("background"))
-                PlayerPrefs.SetInt("background", 0);
-            changeBackground(PlayerPrefs.GetInt("background"));
+    
 
             if (!PlayerPrefs.HasKey("looks"))
                 PlayerPrefs.SetInt("looks", 0);
@@ -78,7 +75,7 @@ namespace PET
                     robotPanel.SetActive(!robotPanel.activeInHierarchy);
                     break;
                     case (1):
-                    homePanel.SetActive(!homePanel.activeInHierarchy);
+                    
                     break;
                     case (2):
                     foodPanel.SetActive(!foodPanel.activeInHierarchy);
@@ -94,9 +91,9 @@ namespace PET
 
         public void createRobot(int i)
         {
-            if (robot)
-            Destroy(robot);
-            robot = Instantiate(robotList[i], Vector3.zero, Quaternion.identity) as GameObject;
+            //if (robot)
+            //destroy(robot);
+            //robot = Instantiate(robotList[i], Vector3.zero, Quaternion.identity) as GameObject;
 
             toggle(robotPanel);
 
@@ -113,17 +110,7 @@ namespace PET
                 homePanel.SetActive(false);
         }
 
-        public void changeBackground(int i)
-        {
-            background.GetComponent<SpriteRenderer>().sprite = backgroundOptions[i];
         
-            if (homePanel.activeInHierarchy)
-                homePanel.SetActive(false);
-
-            toggle(homePanel);
-
-            PlayerPrefs.SetInt("background", i);
-        }
 
         public void selectFood(int i)
         {
