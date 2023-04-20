@@ -7,7 +7,6 @@ namespace PET
 { 
     public class GameManager : MonoBehaviour
     {
-
         public GameObject happinessText;
         public GameObject hungerText;
         public GameObject coinText;
@@ -50,9 +49,7 @@ namespace PET
             happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().happiness;
             hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().hunger;
             coinText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().coin;
-            nameText.GetComponent<TextMeshProUGUI>().text = robot.GetComponent<Robot>().name;
-
-        
+            nameText.GetComponent<TextMeshProUGUI>().text = robot.GetComponent<Robot>().name;        
         }
 
         public void triggerNamepanel(bool b)

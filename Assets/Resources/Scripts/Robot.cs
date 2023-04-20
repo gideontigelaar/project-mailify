@@ -24,7 +24,7 @@ namespace PET
         public GameObject Person;
         public GameObject Happiness;
 
-        Sprite happy, sad, neutral;
+        
         void Start()
         {
             PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
@@ -34,36 +34,13 @@ namespace PET
             _name = PlayerPrefs.GetString("name");
 
 
-            happy = Resources.Load<Sprite>("emotie1");
-            sad = Resources.Load<Sprite>("emotie3");
-            neutral = Resources.Load<Sprite>("emotie2");
+            
         }
 
         void Update()
         {
-            GetComponent<Animator>().SetBool("jump", gameObject.transform.position.y > -2.9f);
-            if (Input.GetMouseButtonUp(0))
-            {
-              
-                //Debug.Log ("Clicked");
-                Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero);
-                if (hit)
-                {
-                    
-                    Debug.Log (hit.transform.gameObject.name);
-                    if (hit.transform.gameObject.tag == "robot")
-                    {
-                        _clickCount++;
-
-                        {
-                            _clickCount = 0;
-                            UpdateHappiness(1);
-                            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10000));
-                        }
-                    }
-                }
-            }
+            
+            
         }
         void updateStatus()
         {
@@ -176,21 +153,21 @@ namespace PET
         public void UpdateHappiness(int i)
         {
             happiness += i;
-            if (happiness > 100)
-                happiness = 100;
+            if (happiness > 99)
+                happiness = 99;
         }
         public void UpdateHunger(int i)
         {
             hunger += i;
-            if (hunger > 100)
-                hunger = 100;
+            if (hunger > 99)
+                hunger = 99;
         }
 
         public void Updatecoin(int i)
         {
             coin += i;
-            if (coin > 1000)
-                coin = 1000;
+            if (coin > 99)
+                coin = 99;
             if (coin < 0)
                 coin = 0;
 
@@ -200,8 +177,8 @@ namespace PET
             if (!_serverTime)
                 updateDevice();
             PlayerPrefs.SetInt("_hunger", _hunger);
-            PlayerPrefs.SetInt("_coin", _coin);
             PlayerPrefs.SetInt("_happiness", _happiness);
+            PlayerPrefs.SetInt("_coin", _coin);
         }
 
         public void foodButton(int i)
@@ -265,9 +242,9 @@ namespace PET
             {
                 case 0:
                 default:
-                    if (coin > 20)
+                    if (coin >= 50)
                     {
-                        Updatecoin(-20);
+                        Updatecoin(-50);
                         asielPanel.SetActive(false);
                         Person.SetActive(true);
                     }
@@ -277,9 +254,20 @@ namespace PET
            
         }
 
+        public void aaiButton(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                default:
+                UpdateHappiness(30);
+                    break;
+
+            }
+
+        }
 
 
-        
     }
     
        
