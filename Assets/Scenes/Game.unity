@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,6 +153,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 705620537}
   - {fileID: 812190811}
   - {fileID: 307327809}
   m_Father: {fileID: 2008479678}
@@ -995,7 +996,7 @@ RectTransform:
   - {fileID: 2050116539}
   - {fileID: 1406381419}
   m_Father: {fileID: 39581096}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2693,6 +2694,139 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &705620536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705620537}
+  - component: {fileID: 705620540}
+  - component: {fileID: 705620539}
+  - component: {fileID: 705620538}
+  m_Layer: 5
+  m_Name: AaiButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &705620537
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705620536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 39581096}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 141.34691, y: -225.23523}
+  m_SizeDelta: {x: 678.881, y: 1271.3308}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &705620538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705620536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 705620539}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1802570683}
+        m_TargetAssemblyTypeName: PET.Robot, Assembly-CSharp
+        m_MethodName: AaiButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &705620539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705620536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &705620540
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705620536}
+  m_CullTransparentMesh: 1
 --- !u!1 &767850793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3342,7 @@ RectTransform:
   m_Children:
   - {fileID: 788136831}
   m_Father: {fileID: 39581096}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4048,7 +4182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1071896080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5897,6 +6031,7 @@ MonoBehaviour:
   _name: Player
   asielPanel: {fileID: 1071896079}
   Person: {fileID: 1802570679}
+  aaiButton: {fileID: 705620536}
   Happiness: {fileID: 2050116538}
 --- !u!23 &1802570684
 MeshRenderer:
@@ -6827,37 +6962,6 @@ MonoBehaviour:
   nameInput: {fileID: 1025553099}
   nameText: {fileID: 788136830}
   robot: {fileID: 1802570679}
-  robotPanel: {fileID: 0}
-  robotList:
-  - {fileID: 3295234442843126761, guid: 176442ffa47ef1c47a67c803dbb12604, type: 3}
-  - {fileID: 2236580860071188101, guid: 82051850407de2e45b7ed9b0df39eaa9, type: 3}
-  - {fileID: 2236580860071188101, guid: a3cef70bf93366e47a01ffbb287dc8a6, type: 3}
-  - {fileID: 2236580860071188101, guid: ef0fb9b3c39cd2141b519983596d053e, type: 3}
-  homePanel: {fileID: 0}
-  homeTilesSprites:
-  - {fileID: 21300000, guid: 1245c8af17c2c374bb482ae4a5f2211c, type: 3}
-  - {fileID: 21300000, guid: a7a3c567081ba0843bfbb35090c0f8ea, type: 3}
-  - {fileID: 21300000, guid: dd2f7ebf61c2eb540bf0bd2bd376bad2, type: 3}
-  - {fileID: 21300000, guid: 443ebb95c8ebb9948829d724610cabe7, type: 3}
-  - {fileID: 21300000, guid: c93eb59d1d0825045923f9b37694e8c6, type: 3}
-  - {fileID: 21300000, guid: b80c36a27a47bba41ba1c5a1118c8886, type: 3}
-  homeTiles:
-  - {fileID: 983567122}
-  - {fileID: 530671899}
-  - {fileID: 1849461212}
-  - {fileID: 485230778}
-  - {fileID: 1301087544}
-  - {fileID: 1369704705}
-  - {fileID: 1969285195}
-  - {fileID: 699897079}
-  - {fileID: 861259725}
-  - {fileID: 1964708663}
-  - {fileID: 925226524}
-  - {fileID: 550979069}
-  - {fileID: 576490123}
-  - {fileID: 2072461168}
-  - {fileID: 1043671577}
-  - {fileID: 1406806639}
   foodPanel: {fileID: 1351013154}
   foodIcons:
   - {fileID: 21300000, guid: e5adf9d6a24101b42a55b6b64bc83b2a, type: 3}
@@ -12252,7 +12356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game
+  m_text: PET
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,

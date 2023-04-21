@@ -16,14 +16,9 @@ namespace PET
         public GameObject nameText;
 
         public GameObject robot;
-        public GameObject robotPanel;
-        public GameObject []robotList;
-
-        public GameObject homePanel;
-        public Sprite[] homeTilesSprites;
-        public GameObject[] homeTiles;
 
 
+        public bool mIsAppLeft;
         
 
         public GameObject foodPanel;
@@ -34,15 +29,7 @@ namespace PET
 
         private void Start()
         {
-            if (!PlayerPrefs.HasKey("looks"))
-                PlayerPrefs.SetInt("looks", 0);
-            createRobot(PlayerPrefs.GetInt("looks"));
-
-    
-
-            if (!PlayerPrefs.HasKey("looks"))
-                PlayerPrefs.SetInt("looks", 0);
-            createRobot(PlayerPrefs.GetInt("looks"));
+ 
         }
         void Update()
         {
@@ -63,77 +50,26 @@ namespace PET
             }
         }
 
-        public void buttonBehavior(int i)
+        public void OnApplicationFocus(bool hasFocus)
         {
-            switch(i) 
-            { 
-                case 0:
-                default:
-                    robotPanel.SetActive(!robotPanel.activeInHierarchy);
-                    break;
-                    case (1):
-                    
-                    break;
-                    case (2):
-                    foodPanel.SetActive(!foodPanel.activeInHierarchy);
-                    break; 
-                    case (3):
-                    questPanel.SetActive(!questPanel.activeInHierarchy);
-                    break;
-                    case (4):
-                    robot.GetComponent<Robot> ().saveRobot ();
-                    break;
-            }
+            mIsAppLeft = !hasFocus;
         }
 
-        public void createRobot(int i)
+        private void OnAplicationPause(bool PauseStatus)
         {
-            //if (robot)
-            //destroy(robot);
-            //robot = Instantiate(robotList[i], Vector3.zero, Quaternion.identity) as GameObject;
-
-            toggle(robotPanel);
-
-            PlayerPrefs.SetInt("looks", i);
-        }
-        public void ChangeTiles(int t)
-        {
-            for (int i = 0; i < homeTiles.Length; i++)
-                homeTiles[1].GetComponent<SpriteRenderer>().sprite = homeTilesSprites [t];
-
-            toggle(homePanel);
-
-            if (homePanel.activeInHierarchy)
-                homePanel.SetActive(false);
+           mIsAppLeft = PauseStatus;
         }
 
-        
-
-        public void selectFood(int i)
+       public void Mail()
         {
-            if (homePanel.activeInHierarchy)
-                homePanel.SetActive(false);
-            toggle(foodPanel);
+            StartCoroutine(OpenMail());
+       }
+
+        IEnumerator OpenMail()
+        {
+            Application.OpenURL("outlook");
+
         }
 
-        public void selectguest(int i)
-        {
-            if (homePanel.activeInHierarchy)
-                homePanel.SetActive(false);
-            toggle(questPanel);
-        }
-
-        public void asiel(int i)
-        {
-            if (asielPanel.activeInHierarchy)
-                asielPanel.SetActive(false);
-            toggle(asielPanel);
-        }
-
-        public void toggle(GameObject g)
-        {
-            if (g.activeInHierarchy)
-                g.SetActive(false);
-        }
     }
 }

@@ -22,6 +22,7 @@ namespace PET
         private int _clickCount;
         public GameObject asielPanel;
         public GameObject Person;
+        public GameObject aaiButton;
         public GameObject Happiness;
 
         
@@ -73,15 +74,16 @@ namespace PET
             if (_hunger < 0) { 
                 _hunger = 0; 
             }
-            _happiness -= (int)((100 - _hunger) * (ts.TotalHours * 5));
+            _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
             if (_happiness < 0)
             {
                 _happiness = 0;
             }
             if (_happiness == 0) //* (ts.TotalDays * 4))
             {
-              asielPanel.SetActive(true);
-            Person.SetActive(false);
+                asielPanel.SetActive(true);
+                Person.SetActive(false);
+                aaiButton.SetActive(false);
             }
 
 
@@ -247,6 +249,7 @@ namespace PET
                         Updatecoin(-50);
                         asielPanel.SetActive(false);
                         Person.SetActive(true);
+                        aaiButton.SetActive(true);
                     }
                  break;
                 
@@ -254,13 +257,14 @@ namespace PET
            
         }
 
-        public void aaiButton(int i)
+        public void AaiButton(int i)
         {
             switch (i)
             {
                 case 0:
                 default:
-                UpdateHappiness(30);
+                UpdateHappiness(5);
+                    Person.transform.position = new Vector3((float)-0.23, 0, (float)-9.012836);
                     break;
 
             }
