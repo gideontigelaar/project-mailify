@@ -50,26 +50,26 @@ namespace PET
             }
         }
 
-        public void OnApplicationFocus(bool hasFocus)
-        {
-            mIsAppLeft = !hasFocus;
-        }
+    //     public void OnApplicationFocus(bool hasFocus)
+    //     {
+    //         mIsAppLeft = !hasFocus;
+    //     }
 
-        private void OnAplicationPause(bool PauseStatus)
-        {
-           mIsAppLeft = PauseStatus;
-        }
+    //     private void OnAplicationPause(bool PauseStatus)
+    //     {
+    //        mIsAppLeft = PauseStatus;
+    //     }
 
-       public void Mail()
-        {
-            StartCoroutine(OpenMail());
-       }
+    //    public void Mail()
+    //     {
+    //         StartCoroutine(OpenMail());
+    //    }
 
-        IEnumerator OpenMail()
-        {
-            Application.OpenURL("outlook");
+    //     IEnumerator OpenMail()
+    //     {
+    //         Application.OpenURL("outlook");
 
-        }
+    //     }
 
     }
 }
