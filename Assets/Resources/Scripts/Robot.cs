@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Robot : MonoBehaviour
 {
     [SerializeField] private int _hunger;
@@ -18,7 +19,12 @@ public class Robot : MonoBehaviour
     public GameObject aaiButton;
     public GameObject Happiness;
     public GameObject FoodPanel;
+    public GameObject mailButton1;
+    public GameObject mailButton2;
+    public GameObject mailButton3;
+    public GameObject mailButton4;
 
+    
     void Start()
     {
         PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
@@ -30,6 +36,9 @@ public class Robot : MonoBehaviour
             _name = PlayerPrefs.GetString("name");
         }
     }
+
+   
+
 
     void updateStatus()
     {
@@ -274,6 +283,33 @@ public class Robot : MonoBehaviour
             UpdateHappiness(5);
             Person.transform.position = new Vector3((float) - 0.23, 0, (float) - 9.012836);
             break;
+        }
+    }
+
+    public void mailButton(int i)
+    {
+        switch (i)
+        {
+            case (0):
+            default:
+                Application.OpenURL("mailto:");
+                mailButton1.SetActive(false);
+                break;
+
+            case (1):
+                Application.OpenURL("mailto:");
+                mailButton1.SetActive(false);
+                break;
+
+            case (2):
+                Application.OpenURL("mailto:");
+                mailButton1.SetActive(false);
+                break;
+
+            case (3):
+                Application.OpenURL("mailto:");
+                mailButton1.SetActive(false);
+                break;
         }
     }
 }
