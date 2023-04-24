@@ -22,7 +22,6 @@ namespace PET
         
 
         public GameObject foodPanel;
-        public Sprite[] foodIcons;
 
         public GameObject questPanel;
         public GameObject asielPanel;
