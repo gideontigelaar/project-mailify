@@ -92,6 +92,11 @@ public class Robot : MonoBehaviour
         }
     }
 
+    void updateServer()
+    {
+
+    }
+
     void updateDevice()
     {
         PlayerPrefs.SetString("then", getStringTime());
