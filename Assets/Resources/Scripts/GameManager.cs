@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject foodPanel;
     public GameObject questPanel;
     public GameObject asielPanel;
+    public GameObject mailButton1;
+    public GameObject mailButton2;
 
-    public bool mIsAppLeft;
+
 
     void Update()
     {
@@ -36,4 +38,18 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("name", robot.GetComponent<Robot>().name);
         }
     }
+
+    public void Mail1()
+    {
+        Application.OpenURL("https://outlook.live.com/owa/");
+        mailButton1.SetActive(false);
+    }
+
+    public void Mail2()
+    {
+        Application.OpenURL("https://outlook.live.com/owa/");
+        mailButton2.SetActive(false);
+    }
+
+
 }
