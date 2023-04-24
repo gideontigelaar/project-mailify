@@ -24,8 +24,8 @@ namespace PET
         public GameObject Person;
         public GameObject aaiButton;
         public GameObject Happiness;
+        public GameObject FoodPanel;
 
-        
         void Start()
         {
             PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
@@ -33,52 +33,47 @@ namespace PET
             if (!PlayerPrefs.HasKey("name"))
                 PlayerPrefs.SetString("name", "Robot");
             _name = PlayerPrefs.GetString("name");
-
-
-            
         }
 
-        void Update()
-        {
-            
-            
-        }
         void updateStatus()
         {
-                    if (!PlayerPrefs.HasKey("_hunger"))
-                    {
-                        _hunger = 100;
-                        PlayerPrefs.SetInt("_hunger", _hunger);
-                    }
-                    else
-                    {
-                        _hunger = PlayerPrefs.GetInt("_hunger");
-                    }
+            if (!PlayerPrefs.HasKey("_hunger"))
+            {
+                _hunger = 100;
+                PlayerPrefs.SetInt("_hunger", _hunger);
+            }
+            
+            else
+            {
+                _hunger = PlayerPrefs.GetInt("_hunger");
+            
+            if (!PlayerPrefs.HasKey("_happiness"))
+            {
+                _happiness = 100;
+                PlayerPrefs.SetInt("_happiness", _happiness);
+            }
 
-                    if (!PlayerPrefs.HasKey("_happiness"))
-                    {
-                        _happiness = 100;
-                        PlayerPrefs.SetInt("_happiness", _happiness);
-                    }
-                    else
-                    {
-                        _happiness = PlayerPrefs.GetInt("_happiness");
-                    }
+            else
+            {
+                _happiness = PlayerPrefs.GetInt("_happiness");
+            }
+            
+            if (!PlayerPrefs.HasKey("then"))
+                PlayerPrefs.SetString("then", getStringTime())
+            TimeSpan ts = getTimeSpan();
+            _hunger -= (int)(ts.TotalHours * 2);
 
-                    if (!PlayerPrefs.HasKey("then"))
-                        PlayerPrefs.SetString("then", getStringTime());
-
-
-                    TimeSpan ts = getTimeSpan();
-                    _hunger -= (int)(ts.TotalHours * 2);
-            if (_hunger < 0) { 
+            if (_hunger <= 0) { 
                 _hunger = 0; 
             }
+
             _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
-            if (_happiness < 0)
+
+            if (_happiness <= 0)
             {
                 _happiness = 0;
             }
+
             if (_happiness == 0) //* (ts.TotalDays * 4))
             {
                 asielPanel.SetActive(true);
@@ -86,25 +81,11 @@ namespace PET
                 aaiButton.SetActive(false);
             }
 
-
-
-
-
-
-
-
-
-            if (_serverTime)
-                        updateServer();
-                    else
-                        InvokeRepeating("updateDevice", 0f, 30f);
-
-
-        }
-            
-            void updateServer()
-            {
-
+            if (_serverTime) {
+                    updateServer();
+            }
+            else {
+                InvokeRepeating("updateDevice", 0f, 30f);
             }
 
             void updateDevice()
@@ -125,156 +106,154 @@ namespace PET
                 DateTime now = DateTime.Now;
                 return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
             }
-         
 
-            
-                public int hunger
-                {
-                    get { return _hunger; }
-                set { _hunger = value; }
-                }
+            public int hunger
+            {
+                get { return _hunger; }
+            set { _hunger = value; }
+            }
 
-             public int happiness
-             {
-                get { return _happiness; }
-                set { _happiness = value; }
-             }
+            public int happiness
+            {
+               get { return _happiness; }
+               set { _happiness = value; }
+            }
     
-        public string name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public int coin
-        {
-            get { return _coin; }
-            set { _coin = value; }
-        }
-
-        public void UpdateHappiness(int i)
-        {
-            happiness += i;
-            if (happiness > 99)
-                happiness = 99;
-        }
-        public void UpdateHunger(int i)
-        {
-            hunger += i;
-            if (hunger > 99)
-                hunger = 99;
-        }
-
-        public void Updatecoin(int i)
-        {
-            coin += i;
-            if (coin > 99)
-                coin = 99;
-            if (coin < 0)
-                coin = 0;
-
-        }
-        public void saveRobot()
-        {
-            if (!_serverTime)
-                updateDevice();
-            PlayerPrefs.SetInt("_hunger", _hunger);
-            PlayerPrefs.SetInt("_happiness", _happiness);
-            PlayerPrefs.SetInt("_coin", _coin);
-        }
-
-        public void foodButton(int i)
-        {
-            switch (i)
+            public string name
             {
-                case 0:
-                default:
-                if (coin > 1) 
-                {
-                    UpdateHappiness(2);
-                    UpdateHunger(1);
-                    Updatecoin(-1);
-                }
-                break;
-
-                case (1):
-                if (coin > 2) 
-                {
-                    UpdateHappiness(4);
-                    UpdateHunger(2);
-                    Updatecoin(-2);
-                }
-                break;
-
-                case (2):
-                if (coin > 3) 
-                {
-                    UpdateHappiness(6);
-                    UpdateHunger(3);
-                    Updatecoin(-3);
-                }
-                break;
+                get { return _name; }
+                set { _name = value; }
             }
-        }
-
-        public void questButton(int i)
-        {
-            switch (i)
+    
+            public int coin
             {
-                case 0:
-                default:
-                    Updatecoin(25);
-                    break;
-                case (1):
-                    Updatecoin(50);
-                    break;
-                case (2):
-                    Updatecoin(75);
-                    break;
-
-                    case (3):
-                    Updatecoin(100);
-                    break;
+                get { return _coin; }
+                set { _coin = value; }
             }
-        }
-
-        public void asielButton(int i)
-        {
-            switch (i)
+    
+            public void UpdateHappiness(int i)
             {
-                case 0:
-                default:
-                    if (coin >= 50)
+                happiness += i;
+                if (happiness >= 99)
+                    happiness = 99;
+            }
+
+            public void UpdateHunger(int i)
+            {
+                hunger += i;
+                if (hunger >= 99)
+                    hunger = 99;
+            }
+    
+            public void Updatecoin(int i)
+            {
+                coin += i;
+                if (coin >= 99)
+                    coin = 99;
+                if (coin <= 0)
+                    coin = 0;
+    
+            }
+
+            public void saveRobot()
+            {
+                if (!_serverTime)
+                    updateDevice();
+                PlayerPrefs.SetInt("_hunger", _hunger);
+                PlayerPrefs.SetInt("_happiness", _happiness);
+                PlayerPrefs.SetInt("_coin", _coin);
+            }
+    
+            public void foodButton(int i)
+            {
+                switch (i)
+                {
+                    case 0:
+                    default:
+                    if (coin >= 5) 
                     {
-                        Updatecoin(-50);
-                        asielPanel.SetActive(false);
-                        Person.SetActive(true);
-                        aaiButton.SetActive(true);
+                        UpdateHappiness(20);
+                        UpdateHunger(25);
+                        Updatecoin(-5);
+                        FoodPanel.SetActive(false);
                     }
-                 break;
-                
-            }
-           
-        }
-
-        public void AaiButton(int i)
-        {
-            switch (i)
-            {
-                case 0:
-                default:
-                UpdateHappiness(5);
-                    Person.transform.position = new Vector3((float)-0.23, 0, (float)-9.012836);
                     break;
-
+    
+                    case (1):
+                    if (coin >= 10) 
+                    {
+                        UpdateHappiness(30);
+                        UpdateHunger(45);
+                        Updatecoin(-10);
+                        FoodPanel.SetActive(false);
+                    }
+                    break;
+    
+                    case (2):
+                    if (coin >= 15) 
+                    {
+                        UpdateHappiness(40);
+                        UpdateHunger(65);
+                        Updatecoin(-15);
+                        FoodPanel.SetActive(false);
+                    }
+                    break;
+                }
             }
-
+    
+            public void questButton(int i)
+            {
+                switch (i)
+                {
+                    case 0:
+                    default:
+                        Updatecoin(25);
+                        break;
+                    case (1):
+                        Updatecoin(50);
+                        break;
+                    case (2):
+                        Updatecoin(75);
+                        break;
+    
+                        case (3):
+                        Updatecoin(100);
+                        break;
+                }
+            }
+    
+            public void asielButton(int i)
+            {
+                switch (i)
+                {
+                    case 0:
+                    default:
+                        if (coin >= 50)
+                        {
+                            Updatecoin(-50);
+                            asielPanel.SetActive(false);
+                            Person.SetActive(true);
+                            aaiButton.SetActive(true);
+                        }
+                     break;
+                    
+                }
+               
+            }
+    
+            public void AaiButton(int i)
+            {
+                switch (i)
+                {
+                    case 0:
+                    default:
+                    UpdateHappiness(5);
+                        Person.transform.position = new Vector3((float)-0.23, 0, (float)-9.012836);
+                        break;
+    
+            }
+                }
+            }
         }
-
-
-    }
-    
-       
-
-    
+    }    
 }
