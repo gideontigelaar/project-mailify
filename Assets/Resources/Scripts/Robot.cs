@@ -263,7 +263,7 @@ public class Robot : MonoBehaviour
         Application.OpenURL("mailto:");
         
         mailButton.GetComponent<Button>().interactable = false;
-        Waiter.Wait(25200, () =>
+        Waiter.Wait(30, () =>
         {
             if (mailButton != null)
             {
