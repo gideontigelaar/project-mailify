@@ -244,7 +244,7 @@ public class Robot : MonoBehaviour
             case 0:
             default:
             UpdateHappiness(5);
-            UpdateHappiness(1);
+            UpdateCoin(1);
             Person.transform.position = new Vector3((float) - 0.23, 0, (float) - 9.012836);
             break;
             //do this max. 5 times per 7 hours
