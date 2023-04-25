@@ -7,67 +7,31 @@ using UnityEngine.UI;
 
 public class Robot : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [SerializeField]
-    private int _hunger;
-    [SerializeField]
-    private int _happiness;
-    [SerializeField]
-    private int _coin;
-    [SerializeField]
-    private string _name;
-=======
     [SerializeField] private int _hunger;
     [SerializeField] private int _happiness;
     [SerializeField] private int _coin;
     [SerializeField] private string _name;
     [SerializeField] private float _sec;
->>>>>>> Stashed changes
 
     private bool _serverTime;
     private int _clickCount;
-
     public GameObject asielPanel;
     public GameObject Person;
     public GameObject aaiButton;
     public GameObject Happiness;
     public GameObject FoodPanel;
-<<<<<<< Updated upstream
-    // public GameObject mailButton;
-=======
     public GameObject mailButton;
     public GameObject _objectToActivate;
 
     [SerializeField]
     private Button _mailButton; //Is this even necessary?
 
->>>>>>> Stashed changes
 
     void Start()
     {
         PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
         updateStatus();
 
-<<<<<<< Updated upstream
-        if (PlayerPrefs.HasKey("name")) { _name = PlayerPrefs.GetString("name"); }
-        else { PlayerPrefs.SetString("name", "Robot"); _name = "Robot"; }
-
-        if (PlayerPrefs.HasKey("coin")) { _coin = PlayerPrefs.GetInt("coin"); }
-        else { PlayerPrefs.SetInt("coin", 0); _coin = 0; }
-
-        if (PlayerPrefs.HasKey("hunger")) { _hunger = PlayerPrefs.GetInt("hunger"); }
-        else { PlayerPrefs.SetInt("hunger", 65); _hunger = 65; }
-
-        if (PlayerPrefs.HasKey("happiness")) { _happiness = PlayerPrefs.GetInt("happiness"); }
-        else { PlayerPrefs.SetInt("happiness", 65); _happiness = 65; }   
-    }
-
-    void Update()
-    {
-    }
-    
-    void updateStatus()
-=======
         if (!PlayerPrefs.HasKey("name"))
         {
             PlayerPrefs.SetString("name", "Robot");
@@ -95,9 +59,29 @@ public class Robot : MonoBehaviour
     }
 
         void updateStatus()
->>>>>>> Stashed changes
     {
         TimeSpan ts = getTimeSpan();
+        
+        if (!PlayerPrefs.HasKey("_hunger"))
+        {
+            _hunger = 100;
+            PlayerPrefs.SetInt("_hunger", _hunger);
+        }
+        
+        else {
+            _hunger = PlayerPrefs.GetInt("_hunger");
+        }
+
+        if (!PlayerPrefs.HasKey("_happiness"))
+        {
+            _happiness = 100;
+            PlayerPrefs.SetInt("_happiness", _happiness);
+        }
+        
+        else
+        {
+            _happiness = PlayerPrefs.GetInt("_happiness");
+        }
 
         if (!PlayerPrefs.HasKey("then"))
         {
@@ -105,12 +89,18 @@ public class Robot : MonoBehaviour
             _hunger -= (int)(ts.TotalHours * 2);
             
         }
-        
+
+        if (_hunger <= 0)
+        {
+            _hunger = 0;
+        }
+
         _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
 
-        if (_hunger <= 0) { _hunger = 0; }
-
-        if (_happiness <= 0) { _happiness = 0; }
+        if (_happiness <= 0)
+        {
+            _happiness = 0;
+        }
 
        // if (_happiness == 0) //* (ts.TotalDays * 4))
        // {
@@ -119,11 +109,11 @@ public class Robot : MonoBehaviour
        //     aaiButton.SetActive(false);
        // }
 
-        if (_serverTime) { updateServer(); }
+        if (_serverTime)
+        {
+            updateServer();
+        }
 
-<<<<<<< Updated upstream
-        else { InvokeRepeating("updateDevice", 0f, 30f); }
-=======
         if (mailButton == null)
         {
 
@@ -133,11 +123,11 @@ public class Robot : MonoBehaviour
             InvokeRepeating("updateDevice", 0f, 30f);
         }
         
->>>>>>> Stashed changes
     }
 
     void updateServer()
     {
+
     }
 
     void updateDevice()
@@ -222,14 +212,13 @@ public class Robot : MonoBehaviour
         }
     }
 
-    public void saveRobot()
-    {
+    public void saveRobot() {
         if (!_serverTime)
         {
             updateDevice();
-            PlayerPrefs.SetInt("hunger", _hunger);
-            PlayerPrefs.SetInt("happiness", _happiness);
-            PlayerPrefs.SetInt("coin", _coin);
+            PlayerPrefs.SetInt("_hunger", _hunger);
+            PlayerPrefs.SetInt("_happiness", _happiness);
+            PlayerPrefs.SetInt("_coin", _coin);
         }
     }
 
@@ -298,9 +287,9 @@ public class Robot : MonoBehaviour
         {
             case 0:
             default:
-            if (coin >= 30)
+            if (coin >= 50)
             {
-                Updatecoin(-30);
+                Updatecoin(-50);
                 asielPanel.SetActive(false);
                 Person.SetActive(true);
                 aaiButton.SetActive(true);
@@ -321,13 +310,6 @@ public class Robot : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-    // public void mailButton(int i)
-    // {
-    //     Application.OpenURL("mailto:");
-    //     mailButton1.SetActive(false);
-    // }
-=======
     public void MailButton()
     {
         Application.OpenURL("mailto:");
@@ -337,5 +319,4 @@ public class Robot : MonoBehaviour
    
 
     
->>>>>>> Stashed changes
 }
