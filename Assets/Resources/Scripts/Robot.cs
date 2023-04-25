@@ -35,13 +35,13 @@ public class Robot : MonoBehaviour
         else { PlayerPrefs.SetString("name", "Robot"); _name = "Robot"; }
 
         if (PlayerPrefs.HasKey("coin")) { _coin = PlayerPrefs.GetInt("coin"); }
-        else { PlayerPrefs.SetInt("coin", 0); _coin = 0; }
+        else { PlayerPrefs.SetInt("coin", 30); _coin = 30; }
 
         if (PlayerPrefs.HasKey("hunger")) { _hunger = PlayerPrefs.GetInt("hunger"); }
-        else { PlayerPrefs.SetInt("hunger", 65); _hunger = 65; }
+        else { PlayerPrefs.SetInt("hunger", 70); _hunger = 70; }
 
         if (PlayerPrefs.HasKey("happiness")) { _happiness = PlayerPrefs.GetInt("happiness"); }
-        else { PlayerPrefs.SetInt("happiness", 65); _happiness = 65; }   
+        else { PlayerPrefs.SetInt("happiness", 70); _happiness = 70; }   
     }
 
     void Update()
@@ -182,7 +182,7 @@ public class Robot : MonoBehaviour
             if (coin >= 5)
             {
                 UpdateHappiness(20);
-                UpdateHunger(25);
+                UpdateHunger(20);
                 Updatecoin(-5);
                 FoodPanel.SetActive(false);
             }
@@ -191,8 +191,8 @@ public class Robot : MonoBehaviour
             case (1):
             if (coin >= 10)
             {
-                UpdateHappiness(30);
-                UpdateHunger(45);
+                UpdateHappiness(35);
+                UpdateHunger(40);
                 Updatecoin(-10);
                 FoodPanel.SetActive(false);
             }
@@ -200,8 +200,8 @@ public class Robot : MonoBehaviour
 
             case (2):
             if (coin >= 15) {
-                UpdateHappiness(40);
-                UpdateHunger(65);
+                UpdateHappiness(50);
+                UpdateHunger(60);
                 Updatecoin(-15);
                 FoodPanel.SetActive(false);
             }
@@ -215,20 +215,8 @@ public class Robot : MonoBehaviour
         {
             case (0):
             default:
-                Updatecoin(5);
+                Updatecoin(10);
             break;
-
-            // case (1):
-            //     Updatecoin(50);
-            // break;
-
-            // case (2):
-            //     Updatecoin(75);
-            // break;
-
-            // case (3):
-            //     Updatecoin(100);
-            // break;
         }
     }
 
@@ -256,8 +244,10 @@ public class Robot : MonoBehaviour
             case 0:
             default:
             UpdateHappiness(5);
+            UpdateHappiness(1);
             Person.transform.position = new Vector3((float) - 0.23, 0, (float) - 9.012836);
             break;
+            //do this max. 5 times per 7 hours
         }
     }
 
