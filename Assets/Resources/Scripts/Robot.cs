@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Robot : MonoBehaviour
 {
+<<<<<<< Updated upstream
     [SerializeField]
     private int _hunger;
     [SerializeField]
@@ -15,6 +16,13 @@ public class Robot : MonoBehaviour
     private int _coin;
     [SerializeField]
     private string _name;
+=======
+    [SerializeField] private int _hunger;
+    [SerializeField] private int _happiness;
+    [SerializeField] private int _coin;
+    [SerializeField] private string _name;
+    [SerializeField] private float _sec;
+>>>>>>> Stashed changes
 
     private bool _serverTime;
     private int _clickCount;
@@ -24,13 +32,23 @@ public class Robot : MonoBehaviour
     public GameObject aaiButton;
     public GameObject Happiness;
     public GameObject FoodPanel;
+<<<<<<< Updated upstream
     // public GameObject mailButton;
+=======
+    public GameObject mailButton;
+    public GameObject _objectToActivate;
+
+    [SerializeField]
+    private Button _mailButton; //Is this even necessary?
+
+>>>>>>> Stashed changes
 
     void Start()
     {
         PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
         updateStatus();
 
+<<<<<<< Updated upstream
         if (PlayerPrefs.HasKey("name")) { _name = PlayerPrefs.GetString("name"); }
         else { PlayerPrefs.SetString("name", "Robot"); _name = "Robot"; }
 
@@ -49,6 +67,35 @@ public class Robot : MonoBehaviour
     }
     
     void updateStatus()
+=======
+        if (!PlayerPrefs.HasKey("name"))
+        {
+            PlayerPrefs.SetString("name", "Robot");
+            _name = PlayerPrefs.GetString("name");
+        }
+        //if (gameObject.activeInHierarchy)
+        //  gameObject.SetActive(false);
+
+        Button _mailButton = GetComponent<Button>();
+
+        
+
+        StartCoroutine(ActivationRoutine());
+    }
+
+    private IEnumerator ActivationRoutine()
+    {
+
+
+        yield return new WaitForSeconds(_sec * Time.deltaTime);
+
+        Button _mailButton = GetComponent<Button>();
+
+        _mailButton.enabled = true;
+    }
+
+        void updateStatus()
+>>>>>>> Stashed changes
     {
         TimeSpan ts = getTimeSpan();
 
@@ -56,6 +103,7 @@ public class Robot : MonoBehaviour
         {
             PlayerPrefs.SetString("then", getStringTime());
             _hunger -= (int)(ts.TotalHours * 2);
+            
         }
         
         _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
@@ -64,16 +112,28 @@ public class Robot : MonoBehaviour
 
         if (_happiness <= 0) { _happiness = 0; }
 
-        if (_happiness == 0) //* (ts.TotalDays * 4))
-        {
-            asielPanel.SetActive(true);
-            Person.SetActive(false);
-            aaiButton.SetActive(false);
-        }
+       // if (_happiness == 0) //* (ts.TotalDays * 4))
+       // {
+       //     asielPanel.SetActive(true);
+       //     Person.SetActive(false);
+       //     aaiButton.SetActive(false);
+       // }
 
         if (_serverTime) { updateServer(); }
 
+<<<<<<< Updated upstream
         else { InvokeRepeating("updateDevice", 0f, 30f); }
+=======
+        if (mailButton == null)
+        {
+
+        }
+        else
+        {
+            InvokeRepeating("updateDevice", 0f, 30f);
+        }
+        
+>>>>>>> Stashed changes
     }
 
     void updateServer()
@@ -261,9 +321,21 @@ public class Robot : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     // public void mailButton(int i)
     // {
     //     Application.OpenURL("mailto:");
     //     mailButton1.SetActive(false);
     // }
+=======
+    public void MailButton()
+    {
+        Application.OpenURL("mailto:");
+        mailButton.SetActive(false);
+    }
+
+   
+
+    
+>>>>>>> Stashed changes
 }
