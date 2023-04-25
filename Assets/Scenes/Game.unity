@@ -405,7 +405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PAY 30 COINS TO RETRIEVE PET
+  m_text: BETAAL 30 MUNTEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -677,9 +677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SAVE
-
-'
+  m_text: OPSLAAN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -1184,7 +1182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Open mail
+  m_text: Bekijk je mail
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -3701,8 +3699,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your pet has been sent to the asylum because you haven't took care of it
-    for too long
+  m_text: Uw huisdier is naar het asiel gestuurd omdat u er te lang niet voor heeft
+    gezorgd.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -4336,7 +4334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter a name...
+  m_text: Voer een naam in...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -5867,7 +5865,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quests
+  m_text: Opdrachten
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1e7be9c70f7e8542a779fc4297bbe91, type: 2}
   m_sharedMaterial: {fileID: 8559224943013334108, guid: e1e7be9c70f7e8542a779fc4297bbe91,
@@ -9216,7 +9214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shop
+  m_text: Winkel
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -9367,7 +9365,7 @@ GameObject:
   - component: {fileID: 7520864483706358062}
   - component: {fileID: 7520864483706358063}
   m_Layer: 5
-  m_Name: ScheduleBtn
+  m_Name: HelpBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9623,7 +9621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About the creators
+  m_text: Game afsluiten
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -9767,7 +9765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Instellingen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1e7be9c70f7e8542a779fc4297bbe91, type: 2}
   m_sharedMaterial: {fileID: 8559224943013334108, guid: e1e7be9c70f7e8542a779fc4297bbe91,
@@ -10311,7 +10309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Schedule notifications
+  m_text: Hoe te spelen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -10588,7 +10586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mute game audio
+  m_text: Toggle die niks doet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -10780,7 +10778,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Artistic mode
+  m_text: Artistieke modus
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -11041,7 +11039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Help & tutorial
+  m_text: Over de makers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -11346,7 +11344,7 @@ GameObject:
   - component: {fileID: 7520864484843112449}
   - component: {fileID: 7520864484843112454}
   m_Layer: 5
-  m_Name: HelpBtn
+  m_Name: AboutBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12198,7 +12196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quests
+  m_text: Opdrachten
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -12354,7 +12352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Opties
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 912040586070c2f4780ab1a5b6db50bb, type: 2}
   m_sharedMaterial: {fileID: 5876230942603340675, guid: 912040586070c2f4780ab1a5b6db50bb,
@@ -12541,7 +12539,7 @@ GameObject:
   - component: {fileID: 7520864485274023256}
   - component: {fileID: 7520864485274023257}
   m_Layer: 5
-  m_Name: AboutBtn
+  m_Name: QuitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
