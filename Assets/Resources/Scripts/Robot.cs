@@ -215,20 +215,20 @@ public class Robot : MonoBehaviour
         {
             case (0):
             default:
-                Updatecoin(25);
+                Updatecoin(5);
             break;
 
-            case (1):
-                Updatecoin(50);
-            break;
+            // case (1):
+            //     Updatecoin(50);
+            // break;
 
-            case (2):
-                Updatecoin(75);
-            break;
+            // case (2):
+            //     Updatecoin(75);
+            // break;
 
-            case (3):
-                Updatecoin(100);
-            break;
+            // case (3):
+            //     Updatecoin(100);
+            // break;
         }
     }
 
