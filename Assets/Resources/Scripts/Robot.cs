@@ -28,7 +28,7 @@ public class Robot : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
+        PlayerPrefs.SetString("then", "24/04/2023 05:00:00");
         updateStatus();
 
         if (PlayerPrefs.HasKey("name")) { _name = PlayerPrefs.GetString("name"); }
@@ -58,13 +58,13 @@ public class Robot : MonoBehaviour
             _hunger -= (int)(ts.TotalHours * 2);
         }
         
-        _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
+        _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 10));
 
         if (_hunger <= 0) { _hunger = 0; }
 
         if (_happiness <= 0) { _happiness = 0; }
 
-        if (_happiness == 0) //* (ts.TotalDays * 4))
+        if (_happiness == 0) 
         {
             asielPanel.SetActive(true);
             Person.SetActive(false);
@@ -265,7 +265,7 @@ public class Robot : MonoBehaviour
 
 
         mailButton.SetActive(false);
-        Waiter.Wait(3, () =>
+        Waiter.Wait(36000, () =>
         {
             if (mailButton != null)
                 mailButton.SetActive(true);
