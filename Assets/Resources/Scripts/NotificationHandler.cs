@@ -4,40 +4,43 @@ using Unity.Notifications.Android;
 
 public class NotificationHandler : MonoBehaviour
 {
-     private void Start()
-     {
-         Application.targetFrameRate = 120;
+    private const string LAST_NOTIFICATION_TIME_KEY = "last_notification_time";
+    
+    private void Start()
+    {
+        Application.targetFrameRate = 120;
 
-         var channel = new AndroidNotificationChannel()
-         {
-             Id = "channel_id",
-             Name = "Notifications Channel",
-             Importance = Importance.Default,
-             Description = "Reminder notifications",
+        var channel = new AndroidNotificationChannel()
+        {
+            Id = "channel_id",
+            Name = "Notifications Channel",
+            Importance = Importance.Default,
+            Description = "Reminder notifications",
         };
         AndroidNotificationCenter.RegisterNotificationChannel(channel);
-
-        DateTime now = DateTime.Now;
         
-         if (now.Hour >= 10)
-         {
-            var notification1 = new AndroidNotification();
-            notification1.Title = "Notification 1";
-            notification1.Text = "It's 10:00!";
-            notification1.FireTime = new DateTime(now.Year, now.Month, now.Day, 10, 0, 0);
-           notification1.RepeatInterval = new TimeSpan(24, 0, 0);
-            AndroidNotificationCenter.SendNotification(notification1, "channel_id");
+        if (PlayerPrefs.HasKey(LAST_NOTIFICATION_TIME_KEY))
+        {
+            DateTime lastNotificationTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString(LAST_NOTIFICATION_TIME_KEY)));
+            DateTime now = DateTime.Now;
+
+            if (now - lastNotificationTime < TimeSpan.FromMinutes(1))
+            {
+                return;
+            }
+
+            else
+            {
+                AndroidNotificationCenter.CancelAllNotifications();
+            }
         }
 
-        if (now.Hour >= 18)
-        {
-             var notification2 = new AndroidNotification();
-             notification2.Title = "Notification 2";
-             notification2.Text = "It's 18:00!";
-             notification2.FireTime = new DateTime(now.Year, now.Month, now.Day, 18, 0, 0);
-            notification2.RepeatInterval = new TimeSpan(24, 0, 0);
-             AndroidNotificationCenter.SendNotification(notification2, "channel_id");
-        }
+        var notification = new AndroidNotification();
+        notification.Title = "Check je mail!";
+        notification.Text = "Het is alweer 7 uur geleden dat jij je mail gecheckt hebt!";
+        notification.FireTime = System.DateTime.Now.AddMinutes(1);
+        AndroidNotificationCenter.SendNotification(notification, "channel_id");
+
+        PlayerPrefs.SetString(LAST_NOTIFICATION_TIME_KEY, DateTime.Now.ToBinary().ToString());
     }
-    
 }
