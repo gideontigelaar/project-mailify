@@ -244,7 +244,7 @@ public class Robot : MonoBehaviour
             case 0:
             default:
             UpdateHappiness(5);
-            UpdateCoin(1);
+            Updatecoin(1);
             Person.transform.position = new Vector3((float) - 0.23, 0, (float) - 9.012836);
             break;
             //do this max. 5 times per 7 hours
@@ -255,5 +255,14 @@ public class Robot : MonoBehaviour
     {
         Application.OpenURL("mailto:");
         mailButton.GetComponent<Button>().interactable = false;
+
+
+        mailButton.SetActive(false);
+        Waiter.Wait(3, () =>
+        {
+            // Just to make sure by the time we're back to activate it, it still exists and wasn't destroyed.
+            if (mailButton != null)
+                mailButton.SetActive(true);
+        });
     }
 }
