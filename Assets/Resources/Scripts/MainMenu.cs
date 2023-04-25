@@ -6,12 +6,12 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject ShopPanel, QuestsPanel, SettingsPanel;
+    public GameObject ShopPanel, QuestsPanel, SettingsPanel, FoodPanel;
     public GameObject GameBtn, ShopBtn, QuestsBtn, SettingsBtn;
 
     public void Start()
     {
-        SetButtonColor(GameBtn, new Color32(255,255,255,255));
+        SetButtonColor(SettingsBtn, new Color32(255,255,255,255));
     }
 
     public void OpenGame()
@@ -32,6 +32,8 @@ public class MainMenu : MonoBehaviour
     public void OpenSettings()
     {
         SetButtonColors(SettingsBtn, GameBtn, ShopBtn, QuestsBtn, new Color32(255,255,255,255));
+        QuestsPanel.SetActive(true);
+        FoodPanel.SetActive(true);
     }
 
     void SetButtonColors(GameObject activeBtn, GameObject inactiveBtn1, GameObject inactiveBtn2, GameObject inactiveBtn3, Color32 activeColor)

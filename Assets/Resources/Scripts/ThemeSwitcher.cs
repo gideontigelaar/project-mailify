@@ -54,7 +54,6 @@ public class ThemeSwitcher : MonoBehaviour
                 }
             }
         }
-
     PlayerPrefs.SetInt("PreviousTheme", theme);
     }
 }
