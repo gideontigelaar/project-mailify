@@ -261,14 +261,14 @@ public class Robot : MonoBehaviour
     public void checkMail(int i)
     {
         Application.OpenURL("mailto:");
+        
         mailButton.GetComponent<Button>().interactable = false;
-
-
-        mailButton.SetActive(false);
-        Waiter.Wait(3, () =>
+        Waiter.Wait(25200, () =>
         {
             if (mailButton != null)
-                mailButton.SetActive(true);
+            {
+                mailButton.GetComponent<Button>().interactable = true;
+            }
         });
     }
 }
