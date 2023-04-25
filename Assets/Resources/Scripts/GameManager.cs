@@ -16,11 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject foodPanel;
     public GameObject questPanel;
     public GameObject asielPanel;
-  
 
-
-
-    void Update()
+    private void Update()
     {
         happinessText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().happiness;
         hungerText.GetComponent<TextMeshProUGUI>().text = "" + robot.GetComponent<Robot>().hunger;
@@ -38,8 +35,4 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("name", robot.GetComponent<Robot>().name);
         }
     }
-
-   
-
-    
 }
