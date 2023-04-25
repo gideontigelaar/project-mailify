@@ -34,7 +34,7 @@ public class Robot : MonoBehaviour
         if (PlayerPrefs.HasKey("name")) { _name = PlayerPrefs.GetString("name"); }
         else { PlayerPrefs.SetString("name", "Robot"); _name = "Robot"; }
 
-        if (PlayerPrefs.HasKey("coin")) { _coin = PlayerPrefs.GetInt("coin"); }
+        if (PlayerPrefs.HasKey("coin")) { _coin = PlayerPrefs.GetInt("coin"); PlayerPrefs.SetInt("coin", 30); _coin = 30; }
         else { PlayerPrefs.SetInt("coin", 30); _coin = 30; }
 
         if (PlayerPrefs.HasKey("hunger")) { _hunger = PlayerPrefs.GetInt("hunger"); }
@@ -237,17 +237,24 @@ public class Robot : MonoBehaviour
         }
     }
 
+    private int aaiCount = 0;
+
     public void AaiButton(int i)
     {
         switch (i)
         {
             case 0:
             default:
-            UpdateHappiness(5);
-            Updatecoin(1);
-            Person.transform.position = new Vector3((float) - 0.23, 0, (float) - 9.012836);
+                UpdateHappiness(5);
+                Updatecoin(1);
+                Person.transform.position = new Vector3(-0.23f, 0f, -9.012836f);
+                aaiCount++;
+                if (aaiCount >= 15)
+                {
+                    Person.transform.Rotate(0f, 180f, 0f);
+                    aaiCount = 0;
+                }
             break;
-            //do this max. 5 times per 7 hours
         }
     }
 
@@ -260,7 +267,6 @@ public class Robot : MonoBehaviour
         mailButton.SetActive(false);
         Waiter.Wait(3, () =>
         {
-            // Just to make sure by the time we're back to activate it, it still exists and wasn't destroyed.
             if (mailButton != null)
                 mailButton.SetActive(true);
         });
