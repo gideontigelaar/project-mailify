@@ -7,127 +7,77 @@ using UnityEngine.UI;
 
 public class Robot : MonoBehaviour
 {
-    [SerializeField] private int _hunger;
-    [SerializeField] private int _happiness;
-    [SerializeField] private int _coin;
-    [SerializeField] private string _name;
-    [SerializeField] private float _sec;
+    [SerializeField]
+    private int _hunger;
+    [SerializeField]
+    private int _happiness;
+    [SerializeField]
+    private int _coin;
+    [SerializeField]
+    private string _name;
 
     private bool _serverTime;
     private int _clickCount;
+
     public GameObject asielPanel;
     public GameObject Person;
     public GameObject aaiButton;
     public GameObject Happiness;
     public GameObject FoodPanel;
     public GameObject mailButton;
-    public GameObject _objectToActivate;
-
-    [SerializeField]
-    private Button _mailButton; //Is this even necessary?
-
 
     void Start()
     {
         PlayerPrefs.SetString("then", "20/04/2023 08:00:00");
         updateStatus();
 
-        if (!PlayerPrefs.HasKey("name"))
-        {
-            PlayerPrefs.SetString("name", "Robot");
-            _name = PlayerPrefs.GetString("name");
-        }
-        //if (gameObject.activeInHierarchy)
-        //  gameObject.SetActive(false);
+        if (PlayerPrefs.HasKey("name")) { _name = PlayerPrefs.GetString("name"); }
+        else { PlayerPrefs.SetString("name", "Robot"); _name = "Robot"; }
 
-        Button _mailButton = GetComponent<Button>();
+        if (PlayerPrefs.HasKey("coin")) { _coin = PlayerPrefs.GetInt("coin"); }
+        else { PlayerPrefs.SetInt("coin", 0); _coin = 0; }
 
-        
+        if (PlayerPrefs.HasKey("hunger")) { _hunger = PlayerPrefs.GetInt("hunger"); }
+        else { PlayerPrefs.SetInt("hunger", 65); _hunger = 65; }
 
-        StartCoroutine(ActivationRoutine());
+        if (PlayerPrefs.HasKey("happiness")) { _happiness = PlayerPrefs.GetInt("happiness"); }
+        else { PlayerPrefs.SetInt("happiness", 65); _happiness = 65; }   
     }
 
-    private IEnumerator ActivationRoutine()
+    void Update()
     {
-
-
-        yield return new WaitForSeconds(_sec * Time.deltaTime);
-
-        Button _mailButton = GetComponent<Button>();
-
-        _mailButton.enabled = true;
     }
-
-        void updateStatus()
+    
+    void updateStatus()
     {
         TimeSpan ts = getTimeSpan();
-        
-        if (!PlayerPrefs.HasKey("_hunger"))
-        {
-            _hunger = 100;
-            PlayerPrefs.SetInt("_hunger", _hunger);
-        }
-        
-        else {
-            _hunger = PlayerPrefs.GetInt("_hunger");
-        }
-
-        if (!PlayerPrefs.HasKey("_happiness"))
-        {
-            _happiness = 100;
-            PlayerPrefs.SetInt("_happiness", _happiness);
-        }
-        
-        else
-        {
-            _happiness = PlayerPrefs.GetInt("_happiness");
-        }
 
         if (!PlayerPrefs.HasKey("then"))
         {
             PlayerPrefs.SetString("then", getStringTime());
             _hunger -= (int)(ts.TotalHours * 2);
-            
-        }
-
-        if (_hunger <= 0)
-        {
-            _hunger = 0;
-        }
-
-        _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
-
-        if (_happiness <= 0)
-        {
-            _happiness = 0;
-        }
-
-       // if (_happiness == 0) //* (ts.TotalDays * 4))
-       // {
-       //     asielPanel.SetActive(true);
-       //     Person.SetActive(false);
-       //     aaiButton.SetActive(false);
-       // }
-
-        if (_serverTime)
-        {
-            updateServer();
-        }
-
-        if (mailButton == null)
-        {
-
-        }
-        else
-        {
-            InvokeRepeating("updateDevice", 0f, 30f);
         }
         
+        _happiness -= (int)((99 - _hunger) * (ts.TotalHours * 5));
+
+        if (_hunger <= 0) { _hunger = 0; }
+
+        if (_happiness <= 0) { _happiness = 0; }
+
+        if (_happiness == 0) //* (ts.TotalDays * 4))
+        {
+            asielPanel.SetActive(true);
+            Person.SetActive(false);
+            aaiButton.SetActive(false);
+        }
+
+        if (_serverTime) { updateServer(); }
+
+        else { InvokeRepeating("updateDevice", 0f, 30f); }
     }
 
     void updateServer()
     {
-
     }
 
     void updateDevice()
@@ -212,13 +162,14 @@ public class Robot : MonoBehaviour
         }
     }
 
-    public void saveRobot() {
+    public void saveRobot()
+    {
         if (!_serverTime)
         {
             updateDevice();
-            PlayerPrefs.SetInt("_hunger", _hunger);
-            PlayerPrefs.SetInt("_happiness", _happiness);
-            PlayerPrefs.SetInt("_coin", _coin);
+            PlayerPrefs.SetInt("hunger", _hunger);
+            PlayerPrefs.SetInt("happiness", _happiness);
+            PlayerPrefs.SetInt("coin", _coin);
         }
     }
 
@@ -287,9 +238,9 @@ public class Robot : MonoBehaviour
         {
             case 0:
             default:
-            if (coin >= 50)
+            if (coin >= 30)
             {
-                Updatecoin(-50);
+                Updatecoin(-30);
                 asielPanel.SetActive(false);
                 Person.SetActive(true);
                 aaiButton.SetActive(true);
@@ -310,13 +261,9 @@ public class Robot : MonoBehaviour
         }
     }
 
-    public void MailButton()
+    public void checkMail(int i)
     {
         Application.OpenURL("mailto:");
-        mailButton.SetActive(false);
+        mailButton.GetComponent<Button>().interactable = false;
     }
-
-   
-
-    
 }
