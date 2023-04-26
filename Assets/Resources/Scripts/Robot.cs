@@ -28,7 +28,7 @@ public class Robot : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetString("then", "24/04/2023 05:00:00");
+        PlayerPrefs.SetString("then", "10/04/2023 05:00:00");
         updateStatus();
 
         if (PlayerPrefs.HasKey("name")) { _name = PlayerPrefs.GetString("name"); }
@@ -54,7 +54,7 @@ public class Robot : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("then"))
         {
-            PlayerPrefs.SetString("then", getStringTime());
+            PlayerPrefs.SetString("then", GetStringTime());
             _hunger -= (int)(ts.TotalHours * 2);
         }
         
@@ -64,12 +64,12 @@ public class Robot : MonoBehaviour
 
         if (_happiness <= 0) { _happiness = 0; }
 
-        if (_happiness == 0) 
-        {
-            asielPanel.SetActive(true);
-            Person.SetActive(false);
-            aaiButton.SetActive(false);
-        }
+       // if (_happiness == 0) 
+        //{
+         //   asielPanel.SetActive(true);
+         //   Person.SetActive(false);
+         //   aaiButton.SetActive(false);
+        //}
 
         if (_serverTime) { updateServer(); }
 
@@ -82,7 +82,7 @@ public class Robot : MonoBehaviour
 
     void updateDevice()
     {
-        PlayerPrefs.SetString("then", getStringTime());
+        PlayerPrefs.SetString("then", GetStringTime());
     }
 
     TimeSpan getTimeSpan()
@@ -98,7 +98,7 @@ public class Robot : MonoBehaviour
         }
     }
 
-    string getStringTime()
+    string GetStringTime()
     {
         DateTime now = DateTime.Now;
         return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
@@ -271,4 +271,8 @@ public class Robot : MonoBehaviour
                 mailButton.SetActive(true);
         });
     }
+
+    
+
+
 }
